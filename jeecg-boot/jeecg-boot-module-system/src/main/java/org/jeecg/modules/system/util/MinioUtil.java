@@ -1,5 +1,6 @@
 package org.jeecg.modules.system.util;
 
+import io.github.pixee.security.Filenames;
 import io.minio.MinioClient;
 import io.minio.errors.*;
 import lombok.extern.slf4j.Slf4j;
@@ -59,7 +60,7 @@ public class MinioUtil {
                 log.info("create a new bucket.");
             }
             InputStream stream = file.getInputStream();
-            String orgName = file.getOriginalFilename();// 获取文件名
+            String orgName = Filenames.toSimpleFileName(file.getOriginalFilename());// 获取文件名
             String objectName = bizPath+"/"+orgName.substring(0, orgName.lastIndexOf(".")) + "_" + System.currentTimeMillis() + orgName.substring(orgName.indexOf("."));
 
             // 使用putObject上传一个本地文件到存储桶中。

@@ -5,6 +5,7 @@ import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.common.auth.DefaultCredentialProvider;
 import com.aliyun.oss.model.CannedAccessControlList;
 import com.aliyun.oss.model.PutObjectResult;
+import io.github.pixee.security.Filenames;
 import org.apache.tomcat.util.http.fileupload.FileItemStream;
 import org.jeecg.common.util.oConvertUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -63,7 +64,7 @@ public class OssBootUtil {
         initOSS(endPoint, accessKeyId, accessKeySecret);
         StringBuilder fileUrl = new StringBuilder();
         try {
-            String suffix = file.getOriginalFilename().substring(file.getOriginalFilename().lastIndexOf('.'));
+            String suffix = Filenames.toSimpleFileName(file.getOriginalFilename()).substring(file.getOriginalFilename().lastIndexOf('.'));
             String fileName = UUID.randomUUID().toString().replace("-", "") + suffix;
             if (!fileDir.endsWith("/")) {
                 fileDir = fileDir.concat("/");

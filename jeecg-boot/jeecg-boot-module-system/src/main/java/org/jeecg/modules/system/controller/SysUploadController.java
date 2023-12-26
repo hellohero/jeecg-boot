@@ -1,5 +1,6 @@
 package org.jeecg.modules.system.controller;
 
+import io.github.pixee.security.Filenames;
 import lombok.extern.slf4j.Slf4j;
 import org.jeecg.common.api.vo.Result;
 import org.jeecg.common.util.oConvertUtils;
@@ -38,7 +39,7 @@ public class SysUploadController {
         }
         MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
         MultipartFile file = multipartRequest.getFile("file");// 获取上传文件对象
-        String orgName = file.getOriginalFilename();// 获取文件名
+        String orgName = Filenames.toSimpleFileName(file.getOriginalFilename());// 获取文件名
         String file_url =  MinioUtil.upload(file,bizPath);
         //保存文件信息
         OSSFile minioFile = new OSSFile();

@@ -63,7 +63,8 @@
 		<aliyun-java-sdk-dysmsapi.version>1.0.0</aliyun-java-sdk-dysmsapi.version>
 		<aliyun.oss.version>3.6.0</aliyun.oss.version>
 		<guava.version>26.0-jre</guava.version>
-    </properties>
+		<versions.java-security-toolkit>1.1.1</versions.java-security-toolkit>
+	</properties>
     
 	<dependencies>
 		<!--集成springmvc框架并实现自动配置 -->
@@ -366,6 +367,12 @@
 				<groupId>com.qiniu</groupId>
 				<artifactId>qiniu-java-sdk</artifactId>
 				<version>7.2.23</version>
+			</dependency>
+			<dependency>
+				<groupId>io.github.pixee</groupId>
+				<artifactId>java-security-toolkit</artifactId>
+				
+				<version>${versions.java-security-toolkit}</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
